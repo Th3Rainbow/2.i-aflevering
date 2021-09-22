@@ -10,7 +10,7 @@ public class AlgoritmeAnalyse{
 
     for(int j=0; j < numberOfArrays; j++){
       int[] list = AlgoritmeAnalyse.generateRandomArray(lengthArray);
-      System.out.println(" sorteringstid " + beregnSorteringsTid(list) + "\n");
+      System.out.println(+ beregnSorteringsTid(list));
       //sort og tag tid
     }
   }
@@ -40,11 +40,10 @@ public static void sorteringAfTal(int[] list){
 }
 
 public static void printArray(int[] list){
-  System.out.print("Soted array: ");
+/*  System.out.print("Sorted array: ");
     for(int i : list){
       System.out.print(i + " ");
-
-    }
+    }*/
 }
 
 
