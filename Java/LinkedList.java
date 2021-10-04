@@ -29,4 +29,5 @@ public class LinkedList {
     n.next = first;
     first = n;
     }
+    
   }

@@ -8,5 +8,6 @@ public class Main {
     coolList.addTal(50);
     coolList.setFirst(10);
     coolList.PrintAll();
+    
   }
 }

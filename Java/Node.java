@@ -7,4 +7,5 @@
   this.value = value;
   this.next = next;
   }
+  
 }
