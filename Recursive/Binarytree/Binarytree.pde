@@ -12,12 +12,11 @@ void tegnGren(PVector lastPos, PVector lastVec, float v) { // funktion til at la
     p.mult(0.8); // mupliplicere den nye vector med 0.8 for at kun er 80% så stor
     PVector newPos = PVector.add(lastPos, p); // finder de nye positioner for x og y ved at addere den nye vector med den gamle
     line(lastPos, newPos); // funktion til at lave en linje ud fra 2 vectorere 
-
     tegnGren(newPos, p, v * 0.9); // kalder funktionen igen med en anden vinkel
-    tegnGren(newPos, p, -v * 0.9); 
+    tegnGren(newPos, p, -v * 0.9);
   }
 }
 
 void line(PVector a, PVector b) { // funktion til at lave en lunje ud fra 2 vectorere 
-  line(a.x, a.y, b.x, b.y); // laver en linje ud fra de 2 vectorere 
+  line(a.x, a.y, b.x, b.y); // laver en linje ud fra de 2 vectorere
 }
