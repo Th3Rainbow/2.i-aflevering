@@ -1,8 +1,13 @@
+int x = 250;
+int y = 400;
+int l = -100;
+int s = 0;
+
 void setup() { 
   size(500, 500); // laver skærmen til at være 500x500
-  line(250, 500, 250, 400); // laver starter linjen
-  tegnGren(new PVector(250, 400), new PVector(0, -100), PI/8); // kalder funktionen til at lave en gren
-  tegnGren(new PVector(250, 400), new PVector(0, -100), -PI/8); // kalder funtionen til at lave en gren
+  line(x, 500, x, y); // laver starter linjen
+  tegnGren(new PVector(x, y), new PVector(s, l), PI/8); // kalder funktionen til at lave en gren
+  tegnGren(new PVector(x, y), new PVector(s, l), -PI/8); // kalder funtionen til at lave en gren
 }
 
 void tegnGren(PVector lastPos, PVector lastVec, float v) { // funktion til at lave en gren
