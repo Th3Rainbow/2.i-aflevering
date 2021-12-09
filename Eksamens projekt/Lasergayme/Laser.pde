@@ -1,3 +1,2 @@
-Class laser{
-  
+class laser{
 }
