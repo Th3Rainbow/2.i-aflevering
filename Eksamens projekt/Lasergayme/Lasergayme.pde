@@ -6,6 +6,7 @@ boolean shoot = false;
 boolean up = false;
 
 boolean mainMeny = true;
+boolean dead = false;
 
 PImage player;
 PImage laser0Left;
@@ -59,33 +60,40 @@ void draw() {
   textSize(40);
   if (mainMeny == true) {
     rect(340, 340, 200, 50);
-    fill(0,0,0);
+    fill(0, 0, 0);
     text("MainMeny", 340, 350);
+    text("Play", 340, 420);
     noFill();
-    rect(280, 410, 80, 50);
-    rect(400, 410, 80, 50);
-  }else{
-  int posx = 60;
-  int posy = 130;
-  rectMode(CORNER);
-  grid(100, 100, 580, 100, 100, 100, 100, 580);
-  up = false;
-  for (laser b : LaserList) {
-    b.drawLaser(posx, posy, chance, laser0Right, laser1Right, laser2Right, up, laserBeam);
-    posy = posy + 60;
-  }
+    rect(340, 410, 80, 50);
+    text(mouseX + " " + mouseY, mouseX, mouseY);
+  } else if (dead == true) {
+    rect(340, 340, 200, 50);
+    text("YOU DIED!", 340, 350);
+    rect(340, 410, 200, 50);
+    text("Retry level", 340, 420);
+    text(mouseX + " " + mouseY, mouseX, mouseY);
+  } else {
+    int posx = 60;
+    int posy = 130;
+    rectMode(CORNER);
+    grid(100, 100, 580, 100, 100, 100, 100, 580);
+    up = false;
+    for (laser b : LaserList) {
+      b.drawLaser(posx, posy, chance, laser0Right, laser1Right, laser2Right, up, laserBeam);
+      posy = posy + 60;
+    }
 
-  posx = 130;
-  posy = 620;
-  up = true;
-  for (laser c : LaserList2) {
-    c.drawLaser(posx, posy, chance, laser0Up, laser1Up, laser2Up, up, laserBeamUp);
-    posx = posx + 60;
-  }
-  a.drawPlayer(player);
-  fill(0, 0, 0);
-  text(mouseX + " " + mouseY, mouseX, mouseY);
-  noFill();
+    posx = 130;
+    posy = 620;
+    up = true;
+    for (laser c : LaserList2) {
+      c.drawLaser(posx, posy, chance, laser0Up, laser1Up, laser2Up, up, laserBeamUp);
+      posx = posx + 60;
+    }
+    a.drawPlayer(player);
+    fill(0, 0, 0);
+    text(mouseX + " " + mouseY, mouseX, mouseY);
+    noFill();
   }
 }
 
@@ -115,4 +123,12 @@ void drawLaser() {
 }
 
 void obstacle() {
+}
+void mousePressed() {
+
+  if (mouseX >= 300 && mouseX <= 380 && mouseY >= 385 && mouseY <= 435 && mainMeny == true) {
+    mainMeny = false;
+  }
+  if (mouseX >= 240 && mouseX <= 440 && mouseY >= 385 && mouseY <= 435 && dead == true)
+    dead = false;
 }

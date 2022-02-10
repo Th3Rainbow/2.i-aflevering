@@ -28,9 +28,15 @@ class laser {
     } else if (currentTime1 >= 2000 && currentTime1 <= 3000) {
       fill(255, 0, 0);
       if (up == true){
+        if (a.x1 == x){
+         dead = true; 
+        }
         image(laser, x, 350);
       }else{
       image(laser, 330, y);
+      if (a.x2 == y){
+        dead = true;
+      }
       }
       image(L2, x, y);
     } else if (currentTime1 > 3000){
