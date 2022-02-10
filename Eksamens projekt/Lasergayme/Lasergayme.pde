@@ -4,6 +4,7 @@ int chance = 1000;
 boolean shoot = false;
 PImage img;
 ArrayList <laser> LaserList = new ArrayList <laser> ();
+ArrayList <laser> LaserList2 = new ArrayList <laser> ();
 player a = new player(pX1, pY1);
 
 void setup() {
@@ -12,6 +13,10 @@ void setup() {
   for (float o = 0; o<8; o++) {
     laser b = new laser();
     LaserList.add(b);
+  }
+  for (float o = 0; o<8; o++) {
+    laser c = new laser();
+    LaserList2.add(c);
   }
 }
 
@@ -25,6 +30,13 @@ void draw() {
   grid(100, 100, 580, 100, 100, 100, 100, 580);
     for (laser b : LaserList) {
       b.drawLaser(posx, posy, chance);
+      posy = posy + 60;
+    }
+    posx = 620;
+    posy = 130;
+    for (laser c : LaserList2) {
+      println(posx);
+      c.drawLaser(posx, posy, chance);
       posy = posy + 60;
     }
   a.drawPlayer(img);

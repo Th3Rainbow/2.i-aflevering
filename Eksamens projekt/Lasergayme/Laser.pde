@@ -12,14 +12,14 @@ class laser {
     rect(posx, posy, 50, 50);
     if (random == 50) {
       shoot = true;
-      println("charge");
+     // println("charge");
       laserShoot(posx, posy);
     }
   }
 
   void laserShoot(float x, float y) {
     int currentTime1 = millis() - startTime1;
-    println(currentTime1);
+    //println(currentTime1);
     if (currentTime1 < 2000) {
       fill(255, 0, 0);
       rect(x, y, 50, 50);
