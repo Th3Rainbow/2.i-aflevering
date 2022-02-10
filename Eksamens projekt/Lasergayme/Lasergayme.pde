@@ -65,13 +65,13 @@ void draw() {
     text("Play", 340, 420);
     noFill();
     rect(340, 410, 80, 50);
-    text(mouseX + " " + mouseY, mouseX, mouseY);
+    //text(mouseX + " " + mouseY, mouseX, mouseY);
   } else if (dead == true) {
     rect(340, 340, 200, 50);
     text("YOU DIED!", 340, 350);
     rect(340, 410, 200, 50);
     text("Retry level", 340, 420);
-    text(mouseX + " " + mouseY, mouseX, mouseY);
+    //text(mouseX + " " + mouseY, mouseX, mouseY);
   } else {
     int posx = 60;
     int posy = 130;
@@ -92,7 +92,7 @@ void draw() {
     }
     a.drawPlayer(player);
     fill(0, 0, 0);
-    text(mouseX + " " + mouseY, mouseX, mouseY);
+   // text(mouseX + " " + mouseY, mouseX, mouseY);
     noFill();
   }
 }
