@@ -32,8 +32,8 @@ class player {
     }
   }
 
-  void drawPlayer(PImage img) {
+  void drawPlayer(PImage player) {
     imageMode(CENTER);
-    image(img, x1+1, x2+3);
+    image(player, x1+1, x2+3);
   }
 }

@@ -1,15 +1,46 @@
 int pX1 = 130;
 int pY1 = 130;
-int chance = 1000;
+int chance = 2000;
+
 boolean shoot = false;
-PImage img;
+boolean up = false;
+
+boolean mainMeny = true;
+
+PImage player;
+PImage laser0Left;
+PImage laser0Right;
+PImage laser0Up;
+PImage laser1Left;
+PImage laser1Right;
+PImage laser1Up;
+PImage laser2Left;
+PImage laser2Right;
+PImage laser2Up;
+
+PImage laserBeamUp;
+PImage laserBeam;
+
 ArrayList <laser> LaserList = new ArrayList <laser> ();
 ArrayList <laser> LaserList2 = new ArrayList <laser> ();
+
 player a = new player(pX1, pY1);
 
 void setup() {
+  frameRate(120);
   size(680, 680);
-  img = loadImage("spaceship.png");
+  player = loadImage("spaceship.png");
+  laser0Left = loadImage("Laser0Left.png");
+  laser0Right = loadImage("Laser0Right.png");
+  laser0Up = loadImage("Laser0Up.png");
+  laser1Left = loadImage("Laser1Left.png");
+  laser1Right = loadImage("Laser1Right.png");
+  laser1Up = loadImage("Laser1Up.png");
+  laser2Left = loadImage("Laser2Left.png");
+  laser2Right = loadImage("Laser2Right.png");
+  laser2Up = loadImage("Laser2Up.png");
+  laserBeamUp = loadImage("LaserBeamUp.png");
+  laserBeam = loadImage("LaserBeam.png");
   for (float o = 0; o<8; o++) {
     laser b = new laser();
     LaserList.add(b);
@@ -23,26 +54,39 @@ void setup() {
 void draw() {
   clear();
   background(255, 255, 255);
+  rectMode(CENTER);
+  textAlign(CENTER);
+  textSize(40);
+  if (mainMeny == true) {
+    rect(340, 340, 200, 50);
+    fill(0,0,0);
+    text("MainMeny", 340, 350);
+    noFill();
+    rect(280, 410, 80, 50);
+    rect(400, 410, 80, 50);
+  }else{
   int posx = 60;
   int posy = 130;
   rectMode(CORNER);
-  rect(100, 100, 480, 480);
   grid(100, 100, 580, 100, 100, 100, 100, 580);
-    for (laser b : LaserList) {
-      b.drawLaser(posx, posy, chance);
-      posy = posy + 60;
-    }
-    posx = 620;
-    posy = 130;
-    for (laser c : LaserList2) {
-      println(posx);
-      c.drawLaser(posx, posy, chance);
-      posy = posy + 60;
-    }
-  a.drawPlayer(img);
+  up = false;
+  for (laser b : LaserList) {
+    b.drawLaser(posx, posy, chance, laser0Right, laser1Right, laser2Right, up, laserBeam);
+    posy = posy + 60;
+  }
+
+  posx = 130;
+  posy = 620;
+  up = true;
+  for (laser c : LaserList2) {
+    c.drawLaser(posx, posy, chance, laser0Up, laser1Up, laser2Up, up, laserBeamUp);
+    posx = posx + 60;
+  }
+  a.drawPlayer(player);
   fill(0, 0, 0);
   text(mouseX + " " + mouseY, mouseX, mouseY);
   noFill();
+  }
 }
 
 void keyPressed() {
