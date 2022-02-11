@@ -1,6 +1,5 @@
 
   void mainMenu(){
-    rect(340, 240, 200, 50);
     fill(0, 0, 0);
     text("MainMenu", 340, 250);
     text("Play", 340, 390);
