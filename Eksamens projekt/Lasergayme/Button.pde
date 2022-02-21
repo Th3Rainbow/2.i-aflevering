@@ -1,32 +1,40 @@
-class button{
-  
-  float buttonX, buttonY,buttonW, buttonH;
-  boolean option;
+class button {
+
+  float buttonX, buttonY, buttonW, buttonH;
   String text;
-  button(float x, float y, float w, float h, String t, boolean o){
+  boolean pressed = false;
+  boolean clicked = false;
+  button(float x, float y, float w, float h, String t) {
     buttonX = x;
     buttonY = y;
     buttonW = w;
     buttonH = h;
     text = t;
-    option = o;
-    
-    
   }
-  
-  
-  void drawButton(){
+
+
+  void render() {
     rect(buttonX, buttonY, buttonW, buttonH);
+    fill(0, 0, 0);
     text(text, buttonX, buttonY+10);
+    noFill();
   }
-  
-  void buttonClicked(){
-    if(mouseX > buttonX - buttonH/2 && mouseX < buttonX + buttonH/2 && mouseY > buttonY - buttonW/2 && mouseY < buttonY + buttonW/2){
-      dead = false;
-      mainMenu = false;
-      levels = false;
-      option = true;
-      
+
+  void update() {
+    if (mousePressed == true && mouseButton == LEFT && pressed == false) {
+      pressed = true;
+      if (mouseX >= buttonX - buttonW/2 && mouseX <= buttonX + buttonW/2 && mouseY >= buttonY - buttonH/2 && mouseY <= buttonY + buttonH/2) {
+        clicked = true;
+      }
+    } else {
+      clicked = false;
     }
+    if (mousePressed != true) {
+      pressed = false;
+    }
+  }
+
+  boolean isClicked() {
+    return clicked;
   }
 }

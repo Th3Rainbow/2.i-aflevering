@@ -1,9 +1,25 @@
+button playButton;
+button levelsButton;
+
+button level1;
+button level2;
+button level3;
+button level4;
+button level5;
+
+button back;
+
+button retry;
+button main;
+
+button next;
+
 int pX1 = 130; //Player x1
 int pY1 = 130; // Player y1
 int chance = 2000; // chance for each laser to shoot each frame
 
 int currentLvl = 1; // current level
-int highestLvl = 1; // highest lvl reached
+int highestLvl = 0; // highest lvl reached
 int chargeTime = 2000; // time for laser to charge
 int selectedLvl = 1; // selected lvl
 
@@ -13,6 +29,7 @@ int startTime; // used for timing
 boolean obstacle = false; // if the current level has obstacles
 boolean shoot = false; // if laser shoots
 boolean up = false; // if laser points up
+boolean clickable = true;
 
 boolean mainMenu = true; // mainMenu option
 boolean dead = false; // dead option
@@ -132,13 +149,16 @@ void grid(int vertx1, int verty1, int vertx2, int verty2, int levelx1, int level
 
 void obstacle() {
 }
+void mouseReleased(){
+   clickable = true; 
+}
 void mouseClicked() {
 
  /* if (mouseX >= 300 && mouseX <= 380 && mouseY >= 355 && mouseY <= 405 && mainMenu == true) {
     mainMenu = false;
     startTime = millis();
     return;
-  } */
+  } 
   if (mouseX >= 240 && mouseX <= 440 && mouseY >= 385 && mouseY <= 435 && dead == true) {
     dead = false;
     startTime = millis();
@@ -173,5 +193,5 @@ void mouseClicked() {
   if (mouseX >= 435 && mouseX <= 485 && mouseY >= 235 && mouseY <= 285 && levels == true && highestLvl >= 5) {
     selectedLvl = 5;
     return;
-  }
-}
+  }*/
+} 
