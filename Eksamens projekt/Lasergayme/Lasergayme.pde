@@ -7,9 +7,10 @@ int highestLvl = 1; // highest lvl reached
 int chargeTime = 2000; // time for laser to charge
 int selectedLvl = 1; // selected lvl
 
-int levelTime = 20000; // how long the level is
+int levelTime; // how long the level is
 int startTime; // used for timing
 
+boolean obstacle = false; // if the current level has obstacles
 boolean shoot = false; // if laser shoots
 boolean up = false; // if laser points up
 
@@ -17,7 +18,7 @@ boolean mainMenu = true; // mainMenu option
 boolean dead = false; // dead option
 boolean levels = false; // levels option
 
-          // different images
+// different images
 PImage player;
 
 PImage laser0Left;
@@ -66,7 +67,6 @@ void setup() {
 
 void draw() {
   clear();
-  println(startTime);
   background(255, 255, 255);
   rectMode(CENTER);
   textAlign(CENTER);
@@ -81,9 +81,9 @@ void draw() {
     levels();
     return;
   } else {
+    checkLevel();
     int currentTime = millis() - startTime; // starter timeren
-    println(currentTime);
-    if (currentTime >= levelTime){ // tjekker om dette level er færdigt
+    if (currentTime >= levelTime) { // tjekker om dette level er færdigt
       win(); // går til win skærmen
       return;
     }
@@ -129,25 +129,21 @@ void grid(int vertx1, int verty1, int vertx2, int verty2, int levelx1, int level
     grid(vertx1, verty1, vertx2, verty2, levelx1, levely1, levelx2, levely2);
   }
 }
-void shoot() {
-  rect(100, 100, 100, 100);
-  println("pew");
-}
 
 void obstacle() {
 }
 void mouseClicked() {
 
-  if (mouseX >= 300 && mouseX <= 380 && mouseY >= 355 && mouseY <= 405 && mainMenu == true) {
+ /* if (mouseX >= 300 && mouseX <= 380 && mouseY >= 355 && mouseY <= 405 && mainMenu == true) {
     mainMenu = false;
     startTime = millis();
     return;
-  }
+  } */
   if (mouseX >= 240 && mouseX <= 440 && mouseY >= 385 && mouseY <= 435 && dead == true) {
     dead = false;
     startTime = millis();
     return;
-  }
+  } 
   if (mouseX >= 240 && mouseX <= 440 && mouseY >= 285 && mouseY <= 335 && mainMenu == true) {
     levels = true;
     mainMenu = false;
@@ -178,5 +174,4 @@ void mouseClicked() {
     selectedLvl = 5;
     return;
   }
-  
 }

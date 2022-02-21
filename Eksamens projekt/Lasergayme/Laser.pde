@@ -21,7 +21,6 @@ class laser { // laser classe
 
   void laserShoot(float x, float y, PImage L1, PImage L2, PImage laser, boolean up, int chargeTimer){
     int currentTime1 = millis() - startTime1;
-    println(currentTime1);
     if (currentTime1 < chargeTimer) {
       fill(255, 0, 0);
       image(L1, x, y);
