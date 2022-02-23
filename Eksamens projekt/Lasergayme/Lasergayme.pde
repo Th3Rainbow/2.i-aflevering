@@ -133,7 +133,7 @@ void draw() {
     }
     a.drawPlayer(player); // tegner playeren
     fill(0, 0, 0);
-    text(mouseX + " " + mouseY, mouseX, mouseY);
+   // text(mouseX + " " + mouseY, mouseX, mouseY);
     noFill();
     //println((a.x1 -130) /60);
     if (obstacle == true) {
