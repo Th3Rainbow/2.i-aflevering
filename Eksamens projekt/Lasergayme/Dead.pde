@@ -18,6 +18,7 @@
     }
     
     if(retry.isClicked() == true && clickable == true){
+      reset();
       dead = false;
       startTime = millis();
       obstacleTime = millis();

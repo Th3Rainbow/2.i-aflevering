@@ -113,7 +113,7 @@ void draw() {
       win(); // går til win skærmen
       return;
     }
-    text(currentTime, 70, 50); // skriver nuværende spille tid
+    text("second " + currentTime/1000 + " out of " + levelTime/1000, 200, 50); // skriver nuværende spille tid
     int posx = 60; // sætter pos for den først laser
     int posy = 130; 
     rectMode(CORNER);
@@ -184,6 +184,23 @@ void grid(int vertx1, int verty1, int vertx2, int verty2, int levelx1, int level
     levelx2 = levelx2 + 60;
     grid(vertx1, verty1, vertx2, verty2, levelx1, levely1, levelx2, levely2);
   }
+}
+
+void reset(){
+   a.x2 = 130; //Player x1
+   a.x1 = 130;
+   LaserList.clear();
+   LaserList2.clear();
+   
+   for (float o = 0; o<8; o++) { // for loop der tegner de lasere til venstre
+    laser b = new laser(); // laver 8 lasere
+    LaserList.add(b); // tilføjer dem til arraylisten
+  }
+  for (float o = 0; o<8; o++) { // for loop det tegner de lasere i bunden
+    laser c = new laser(); // laver 8 lasere
+    LaserList2.add(c); // tilføjer dem til arraylisten
+  }
+   
 }
 
 void mouseReleased() {

@@ -24,6 +24,7 @@
       startTime = millis();
       obstacleTime = millis();
       ObstacleList.clear();
+      reset();
       selectedLvl++;
       clickable = false;
     }
