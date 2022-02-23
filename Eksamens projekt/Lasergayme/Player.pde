@@ -7,7 +7,7 @@ class player {
   }
   void movePlayer(char key) {
     if (key == 'w') {
-      if (x2 < 160) {
+      if (x2 < 160 || ob.checkCollision(key) == true ) {
       } else {
         x2 = x2 -60;
       }
@@ -20,13 +20,13 @@ class player {
       }
     }
     if (key == 's') {
-      if (x2 > 520) {
+      if (x2 > 520 || ob.checkCollision(key) == true ) {
       } else {
         x2 = x2 +60;
       }
     }
     if (key == 'd') {
-      if (x1 > 520) {
+      if (x1 > 520 || ob.checkCollision(key) == true ) {
           } else {
             x1 = x1 +60;
           

@@ -23,7 +23,7 @@ int chance = 2000; // chance for each laser to shoot each frame
 int currentLvl = 1; // current level
 int highestLvl = 0; // highest lvl reached
 int chargeTime = 2000; // time for laser to charge
-int selectedLvl = 3; // selected lvl
+int selectedLvl = 1; // selected lvl
 
 int levelTime; // how long the level is
 int startTime; // used for timing
@@ -120,7 +120,7 @@ void draw() {
     grid(100, 100, 580, 100, 100, 100, 100, 580); // funktion til at lave grid
     up = false; // sætter laserne til at vende til højre
     for (laser b : LaserList) { // for loop som går igennem alle laserne 
-     // b.drawLaser(posx, posy, chance, laser0Right, laser1Right, laser2Right, up, laserBeam, chargeTime); // tegner laserne 
+      b.drawLaser(posx, posy, chance, laser0Right, laser1Right, laser2Right, up, laserBeam, chargeTime); // tegner laserne 
       posy = posy + 60;
     }
 
@@ -128,7 +128,7 @@ void draw() {
     posy = 620;
     up = true; // sætter laserne til at vende op
     for (laser c : LaserList2) { // for loop som går igennem alle laserne
-     // c.drawLaser(posx, posy, chance, laser0Up, laser1Up, laser2Up, up, laserBeamUp, chargeTime); // tegner laserne
+      c.drawLaser(posx, posy, chance, laser0Up, laser1Up, laser2Up, up, laserBeamUp, chargeTime); // tegner laserne
       posx = posx + 60;
     }
     a.drawPlayer(player); // tegner playeren
@@ -142,21 +142,18 @@ void draw() {
         obstacleTime = millis();
         int randomX = int(random(0, 8));
         int randomY = int(random(0, 8));
-        if((a.x1 -130) / 60 == randomX){
-          if (randomX == 7){
+        if ((a.x1 -130) / 60 == randomX) {
+          if (randomX == 7) {
             randomX--;
-          }
-          else if (randomX == 0){
+          } else if (randomX == 0) {
             randomX++;
           }
-        }else if ((a.x2 -130 / 60) == randomY){
-          if (randomY == 7){
+        } else if ((a.x2 -130 / 60) == randomY) {
+          if (randomY == 7) {
             randomY--;
-          }
-          else if (randomY == 0){
+          } else if (randomY == 0) {
             randomY++;
           }
-          
         }
         int obstacleX = randomX * 60 + 130;
         int obstacleY = randomY * 60 + 130;
