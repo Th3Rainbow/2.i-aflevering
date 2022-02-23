@@ -41,7 +41,6 @@ class laser { // laser classe
     } else if (currentTime1 > 3000){
       shoot = false;
       startTime1 = millis();
-      println("reset");
     }
     noFill();
   }

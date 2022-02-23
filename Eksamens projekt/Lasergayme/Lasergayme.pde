@@ -14,6 +14,8 @@ button main;
 
 button next;
 
+obstacle ob;
+
 int pX1 = 130; //Player x1
 int pY1 = 130; // Player y1
 int chance = 2000; // chance for each laser to shoot each frame
@@ -21,10 +23,12 @@ int chance = 2000; // chance for each laser to shoot each frame
 int currentLvl = 1; // current level
 int highestLvl = 0; // highest lvl reached
 int chargeTime = 2000; // time for laser to charge
-int selectedLvl = 1; // selected lvl
+int selectedLvl = 3; // selected lvl
 
 int levelTime; // how long the level is
 int startTime; // used for timing
+
+int obstacleTime;
 
 boolean obstacle = false; // if the current level has obstacles
 boolean shoot = false; // if laser shoots
@@ -53,13 +57,17 @@ PImage laserBeam;
 
 ArrayList <laser> LaserList = new ArrayList <laser> (); // array til lasere
 ArrayList <laser> LaserList2 = new ArrayList <laser> (); // array til lasere
+ArrayList <obstacle> ObstacleList = new ArrayList <obstacle>();
 
 player a = new player(pX1, pY1); // constructor til player
 
 void setup() {
   frameRate(120); // framerate
   size(680, 680); 
+  ob = new obstacle(900, 900);
+  ObstacleList.add(ob);
   startTime = millis(); // start timer
+  obstacleTime  = millis();
   player = loadImage("spaceship.png");
   laser0Left = loadImage("Laser0Left.png");
   laser0Right = loadImage("Laser0Right.png");
@@ -100,6 +108,7 @@ void draw() {
   } else {
     checkLevel();
     int currentTime = millis() - startTime; // starter timeren
+    int currentTimer = millis() - obstacleTime;
     if (currentTime >= levelTime) { // tjekker om dette level er færdigt
       win(); // går til win skærmen
       return;
@@ -111,7 +120,7 @@ void draw() {
     grid(100, 100, 580, 100, 100, 100, 100, 580); // funktion til at lave grid
     up = false; // sætter laserne til at vende til højre
     for (laser b : LaserList) { // for loop som går igennem alle laserne 
-      b.drawLaser(posx, posy, chance, laser0Right, laser1Right, laser2Right, up, laserBeam, chargeTime); // tegner laserne 
+     // b.drawLaser(posx, posy, chance, laser0Right, laser1Right, laser2Right, up, laserBeam, chargeTime); // tegner laserne 
       posy = posy + 60;
     }
 
@@ -119,13 +128,46 @@ void draw() {
     posy = 620;
     up = true; // sætter laserne til at vende op
     for (laser c : LaserList2) { // for loop som går igennem alle laserne
-      c.drawLaser(posx, posy, chance, laser0Up, laser1Up, laser2Up, up, laserBeamUp, chargeTime); // tegner laserne
+     // c.drawLaser(posx, posy, chance, laser0Up, laser1Up, laser2Up, up, laserBeamUp, chargeTime); // tegner laserne
       posx = posx + 60;
     }
     a.drawPlayer(player); // tegner playeren
     fill(0, 0, 0);
-    // text(mouseX + " " + mouseY, mouseX, mouseY);
+    text(mouseX + " " + mouseY, mouseX, mouseY);
     noFill();
+    //println((a.x1 -130) /60);
+    if (obstacle == true) {
+      rectMode(CENTER);
+      if (currentTimer >= 10000) {
+        obstacleTime = millis();
+        int randomX = int(random(0, 8));
+        int randomY = int(random(0, 8));
+        if((a.x1 -130) / 60 == randomX){
+          if (randomX == 7){
+            randomX--;
+          }
+          else if (randomX == 0){
+            randomX++;
+          }
+        }else if ((a.x2 -130 / 60) == randomY){
+          if (randomY == 7){
+            randomY--;
+          }
+          else if (randomY == 0){
+            randomY++;
+          }
+          
+        }
+        int obstacleX = randomX * 60 + 130;
+        int obstacleY = randomY * 60 + 130;
+        ob = new obstacle(obstacleX, obstacleY);
+        ObstacleList.add(ob);
+      }
+
+      for (obstacle ob : ObstacleList) {
+        ob.render();
+      }
+    }
   }
 }
 
@@ -147,51 +189,6 @@ void grid(int vertx1, int verty1, int vertx2, int verty2, int levelx1, int level
   }
 }
 
-void obstacle() {
+void mouseReleased() {
+  clickable = true;
 }
-void mouseReleased(){
-   clickable = true; 
-}
-void mouseClicked() {
-
- /* if (mouseX >= 300 && mouseX <= 380 && mouseY >= 355 && mouseY <= 405 && mainMenu == true) {
-    mainMenu = false;
-    startTime = millis();
-    return;
-  } 
-  if (mouseX >= 240 && mouseX <= 440 && mouseY >= 385 && mouseY <= 435 && dead == true) {
-    dead = false;
-    startTime = millis();
-    return;
-  } 
-  if (mouseX >= 240 && mouseX <= 440 && mouseY >= 285 && mouseY <= 335 && mainMenu == true) {
-    levels = true;
-    mainMenu = false;
-    return;
-  }
-  if (mouseX >= 295 && mouseX <= 385 && mouseY >= 295 && mouseY <= 345 && levels == true) {
-    levels = false;
-    mainMenu = true;
-    return;
-  }
-  if (mouseX >= 195 && mouseX <= 245 && mouseY >= 235 && mouseY <= 285 && levels == true && highestLvl >= 1) {
-    selectedLvl = 1;
-    return;
-  }
-  if (mouseX >= 255 && mouseX <= 305 && mouseY >= 235 && mouseY <= 285 && levels == true && highestLvl >= 2) {
-    selectedLvl = 2;
-    return;
-  }
-  if (mouseX >= 315 && mouseX <= 365 && mouseY >= 235 && mouseY <= 285 && levels == true && highestLvl >= 3) {
-    selectedLvl = 3;
-    return;
-  }
-  if (mouseX >= 375 && mouseX <= 425 && mouseY >= 235 && mouseY <= 285 && levels == true && highestLvl >= 4) {
-    selectedLvl = 4;
-    return;
-  }
-  if (mouseX >= 435 && mouseX <= 485 && mouseY >= 235 && mouseY <= 285 && levels == true && highestLvl >= 5) {
-    selectedLvl = 5;
-    return;
-  }*/
-} 

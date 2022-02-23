@@ -22,6 +22,8 @@
     
     if(next.isClicked() == true && clickable == true){
       startTime = millis();
+      obstacleTime = millis();
+      ObstacleList.clear();
       selectedLvl++;
       clickable = false;
     }

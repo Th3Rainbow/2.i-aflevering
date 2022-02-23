@@ -12,8 +12,9 @@ class player {
         x2 = x2 -60;
       }
     }
+
     if (key == 'a') {
-      if (x1 < 160) {
+      if (x1 < 160 || ob.checkCollision(key) == true ) {
       } else {
         x1 = x1 -60;
       }
@@ -26,14 +27,15 @@ class player {
     }
     if (key == 'd') {
       if (x1 > 520) {
-      } else {
-        x1 = x1 +60;
+          } else {
+            x1 = x1 +60;
+          
+        }
       }
     }
-  }
 
-  void drawPlayer(PImage player) {
-    imageMode(CENTER);
-    image(player, x1+1, x2+3);
+    void drawPlayer(PImage player) {
+      imageMode(CENTER);
+      image(player, x1+1, x2+3);
+    }
   }
-}

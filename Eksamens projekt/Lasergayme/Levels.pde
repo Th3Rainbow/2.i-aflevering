@@ -61,53 +61,34 @@ void checkLevel() {
     levelTime = 20000;
     chargeTime = 2000;
     chance = 2000;
-
-    print("level " + selectedLvl + " valgt");
-    print("levelTime = " + levelTime);
-    print("chargeTime = " + chargeTime);
     break;
 
   case 2:
     levelTime = 45000;
     chargeTime = 1750;
-    chance = 1600;
-
-    print("level " + selectedLvl + " valgt");
-    print("levelTime = " + levelTime);
-    print("chargeTime = " + chargeTime);
+    chance = 1500;
+    println(chance);  
     break;
 
   case 3:
     levelTime = 70000;
     chargeTime = 1500;
-    chance = 1300;
+    chance = 1000;
     obstacle = true;
-
-    print("level " + selectedLvl + " valgt");
-    print("levelTime = " + levelTime);
-    print("chargeTime = " + chargeTime);
     break;
 
   case 4:
     levelTime = 95000;
     chargeTime = 1250;
-    chance = 1000;
+    chance = 800;
     obstacle = true;
-
-    print("level " + selectedLvl + " valgt");
-    print("levelTime = " + levelTime);
-    print("chargeTime = " + chargeTime);
     break;
 
   case 5:
-    chance = 1000;
+    chance = 600;
     chargeTime = 1000;
     levelTime = 120000;
     obstacle = true;
-
-    print("level " + selectedLvl + " valgt");
-    print("levelTime = " + levelTime);
-    print("chargeTime = " + chargeTime);
     break;
   }
 }

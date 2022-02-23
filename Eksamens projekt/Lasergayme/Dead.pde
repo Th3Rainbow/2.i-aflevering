@@ -20,6 +20,9 @@
     if(retry.isClicked() == true && clickable == true){
       dead = false;
       startTime = millis();
+      obstacleTime = millis();
+      shoot = false;
+      ObstacleList.clear();
       clickable = false;
     }
   }
