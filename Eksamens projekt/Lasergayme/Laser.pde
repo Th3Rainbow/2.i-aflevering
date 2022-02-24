@@ -22,7 +22,7 @@ class laser { // laser classe
   void laserShoot(float x, float y, PImage L1, PImage L2, PImage laser, boolean up, int chargeTimer){
     int currentTime1 = millis() - startTime1;
     if (currentTime1 < chargeTimer) {
-      fill(255, 0, 0);
+     // fill(255, 0, 0);
       image(L1, x, y);
     } else if (currentTime1 >= chargeTimer && currentTime1 <= chargeTimer+1000) {
       fill(255, 0, 0);
@@ -33,7 +33,7 @@ class laser { // laser classe
         image(laser, x, 350);
       }else{
       image(laser, 330, y);
-      if (a.x2 == y){
+      if (a.y1 == y){
         dead = true;
       }
       }

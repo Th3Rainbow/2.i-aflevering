@@ -58,12 +58,14 @@ void levels() {
 void checkLevel() {
   switch(selectedLvl) {
   case 1:
+    obstacle = false;
     levelTime = 20000;
     chargeTime = 2000;
     chance = 2000;
     break;
 
   case 2:
+  obstacle = false;
     levelTime = 45000;
     chargeTime = 1750;
     chance = 1500;

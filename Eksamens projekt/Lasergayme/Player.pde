@@ -1,15 +1,15 @@
 class player {
 
-  float x1, x2;
+  float x1, y1;
   player(float x, float y) {
     x1 = x;
-    x2 = y;
+    y1 = y;
   }
   void movePlayer(char key) {
     if (key == 'w') {
-      if (x2 < 160 || ob.checkCollision(key) == true ) {
+      if (y1 < 160 || ob.checkCollision(key) == true ) {
       } else {
-        x2 = x2 -60;
+        y1 = y1 -60;
       }
     }
 
@@ -20,9 +20,9 @@ class player {
       }
     }
     if (key == 's') {
-      if (x2 > 520 || ob.checkCollision(key) == true ) {
+      if (y1 > 520 || ob.checkCollision(key) == true ) {
       } else {
-        x2 = x2 +60;
+        y1 = y1 +60;
       }
     }
     if (key == 'd') {
@@ -36,6 +36,6 @@ class player {
 
     void drawPlayer(PImage player) {
       imageMode(CENTER);
-      image(player, x1+1, x2+3);
+      image(player, x1+1, y1+3);
     }
   }

@@ -14,6 +14,7 @@
    // println(clickable);
     
     if(playButton.isClicked() == true && clickable == true){
+      ObstacleList.clear();
       clickable = false;
       mainMenu = false;
       startTime = millis();
