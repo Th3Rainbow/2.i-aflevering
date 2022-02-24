@@ -10,7 +10,7 @@
   main.update();
   
     text("YOU DIED!", 340, 280);
-    text(mouseX + " " + mouseY, mouseX, mouseY);
+    //text(mouseX + " " + mouseY, mouseX, mouseY);
     if(main.isClicked() == true && clickable == true){
       mainMenu = true;
       dead = false;

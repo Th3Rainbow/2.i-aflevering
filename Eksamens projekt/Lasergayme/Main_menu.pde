@@ -10,7 +10,7 @@
     fill(0, 0, 0);
     text("MainMenu", 340, 250);
     noFill();
-    text(mouseX + " " + mouseY, mouseX, mouseY);
+   // text(mouseX + " " + mouseY, mouseX, mouseY);
    // println(clickable);
     
     if(playButton.isClicked() == true && clickable == true){

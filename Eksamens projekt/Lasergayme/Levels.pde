@@ -52,7 +52,7 @@ void levels() {
 
   text(selectedLvl, 340, 210);
   text("selectedLevel", 340, 150);
-  text(mouseX + " " + mouseY, mouseX, mouseY);
+  //text(mouseX + " " + mouseY, mouseX, mouseY);
 }
 
 void checkLevel() {
