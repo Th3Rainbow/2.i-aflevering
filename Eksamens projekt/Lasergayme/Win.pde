@@ -1,6 +1,41 @@
 
-  void win(){
-    
+  void win(int time, int score){
+    if (takeScore == true) {
+    score = time;
+    switch(selectedLvl) {
+    case 1:
+      if (score > highscore1) {
+        highscore1 = score;
+      }
+      break;
+
+    case 2: 
+      if (score > highscore2) {
+        highscore2 = score;
+      }
+      break;
+
+    case 3: 
+      if (score > highscore3) {
+        highscore3 = score;
+      }
+      break;
+
+    case 4: 
+      if (score > highscore4) {
+        highscore4 = score;
+      }
+      break;
+
+    case 5: 
+      if (score > highscore5) {
+        highscore5 = score;
+      }
+      break;
+    }
+
+    takeScore = false;
+  }
     main = new button(340, 340, 200, 50, "Mainmenu");
     next = new button(340, 400, 200, 50, "Next level");
     

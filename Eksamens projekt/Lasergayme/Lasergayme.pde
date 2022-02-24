@@ -120,7 +120,8 @@ void draw() {
     checkLevel(); // function that checks what lvl is chosen
     int currentTimer = millis() - obstacleTime;
     if (currentTime >= levelTime) { // Checks if level is over
-      win(); // draws win screen
+      int currentScore = currentTime;
+      win( currentTime, currentScore = currentTime); // draws win screen
       return;
     }
     takeScore = true;

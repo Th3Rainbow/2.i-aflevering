@@ -46,22 +46,42 @@ void dead(int time, int score) { // funktion til at vise dead skærmen
   main.update();
   switch(selectedLvl) {
   case 1:
+  if(highscore1 >= levelTime){
+    text("You already completed this lvl!", 340, 200);
+    break;
+  }
   text("your highscore " + highscore1/1000, 340, 200);
     break;
     
   case 2:
+  if(highscore2 >= levelTime){
+    text("You already completed this lvl!", 340, 200);
+    break;
+  }
   text("your highscore " + highscore2/1000, 340, 200);
     break;
     
   case 3:
+  if(highscore3 >= levelTime){
+    text("You already completed this lvl!", 340, 200);
+    break;
+  }
   text("your highscore " + highscore3/1000, 340, 200);
     break;
     
   case 4:
+  if(highscore4 >= levelTime){
+    text("You already completed this lvl!", 340, 200);
+    break;
+  }
   text("your highscore " + highscore4/1000, 340, 200);
     break;
     
   case 5:
+  if(highscore5 >= levelTime){
+    text("You already completed this lvl!", 340, 200);
+    break;
+  }
   text("your highscore " + highscore5/1000, 340, 200);
     break;
   }
