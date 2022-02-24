@@ -28,7 +28,16 @@ int selectedLvl = 1; // selected lvl
 int levelTime; // how long the level is
 int startTime; // used for timing
 
+int highscore1;
+int highscore2;
+int highscore3;
+int highscore4;
+int highscore5;
+
 int obstacleTime; // The time between obstacles spawn
+
+boolean takeScore = true;
+boolean completed; 
 
 boolean obstacle = false; // if the current level has obstacles
 boolean shoot = false; // if laser shoots
@@ -96,23 +105,25 @@ void draw() {
   rectMode(CENTER);
   textAlign(CENTER);
   textSize(40);
+  int currentTime = millis() - startTime; // starts timer
   if (mainMenu == true) { // mainmenu checks if main menu should be shown
     mainMenu(); // 
     return; // returns so it exists out of function
   } else if (dead == true) { //dead checks if player is dead
-    dead();
+    int currentScore = currentTime;
+    dead(currentTime, currentScore = currentTime);
     return;
   } else if (levels == true) { //levels checks if levels should be shown
     levels();
     return;
   } else {
     checkLevel(); // function that checks what lvl is chosen
-    int currentTime = millis() - startTime; // starts timer
     int currentTimer = millis() - obstacleTime;
     if (currentTime >= levelTime) { // Checks if level is over
       win(); // draws win screen
       return;
     }
+    takeScore = true;
     text("second " + currentTime/1000 + " out of " + levelTime/1000, 200, 50); // displays playtime
     int posx = 60; // pos x for the first laser
     int posy = 130; // pos y for the firstr laser
