@@ -25,7 +25,7 @@ class laser { // laser classe
      // fill(255, 0, 0);
       image(L1, x, y);
     } else if (currentTime1 >= chargeTimer && currentTime1 <= chargeTimer+1000) {
-      fill(255, 0, 0);
+      //fill(255, 0, 0);
       if (up == true){
         if (a.x1 == x){
          dead = true; 
