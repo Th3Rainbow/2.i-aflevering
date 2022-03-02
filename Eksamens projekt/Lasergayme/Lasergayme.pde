@@ -51,16 +51,24 @@ boolean levels = false; // levels option
 // different images
 PImage player;
 
-PImage laser0Left;
 PImage laser0Right;
 PImage laser0Up;
-PImage laser1Left;
+
 PImage laser1Right;
 PImage laser1Up;
-PImage laser2Left;
+
 PImage laser2Right;
 PImage laser2Up;
-  
+
+PImage laser3Right;
+PImage laser3Up;
+
+PImage laser4Right;
+PImage laser4Up;
+
+PImage laser5Right;
+PImage laser5Up;
+
 PImage laserBeamUp;
 PImage laserBeam;
 
@@ -78,15 +86,30 @@ void setup() {
   startTime = millis(); // start timer
   obstacleTime  = millis(); // starter timingen for obstacles
   player = loadImage("spaceship.png");
-  laser0Left = loadImage("Laser0Left.png");
+  
   laser0Right = loadImage("Laser0Right.png");
   laser0Up = loadImage("Laser0Up.png");
-  laser1Left = loadImage("Laser1Left.png");
+  
   laser1Right = loadImage("Laser1Right.png");
   laser1Up = loadImage("Laser1Up.png");
-  laser2Left = loadImage("Laser2Left.png");
-  laser2Right = loadImage("Laser2Right.png");
-  laser2Up = loadImage("Laser2Up.png");
+  
+  laser2Right = loadImage("Laser1Right.png");
+  laser2Up = loadImage("Laser1Up.png");
+  
+  laser3Right = loadImage("Laser1Right.png");
+  laser3Up = loadImage("Laser1Up.png");
+  
+  laser4Right = loadImage("Laser1Right.png");
+  laser4Up = loadImage("Laser1Up.png");
+  
+  laser5Right = loadImage("Laser2Right.png");
+  laser5Up = loadImage("Laser2Up.png");
+  
+  
+  
+  
+  
+  
   laserBeamUp = loadImage("LaserBeamUp.png");
   laserBeam = loadImage("LaserBeam.png");
   for (float o = 0; o<8; o++) { // for loop makes lasers
@@ -152,7 +175,7 @@ void draw() {
         int randomX = int(random(0, 8)); // gets a random number from 0 to 8
         int randomY = int(random(0, 8));
         println((a.x1 -130) / 60);
-        println((a.y1 -130 / 60));
+        println((a.y1 -130) / 60);
         if ((a.x1 -130) / 60 == randomX) { // checks if x cordinate of player and box is the same
           if (randomX == 7) { // checks if the box should be moved left
             randomX--; // moves the box left
