@@ -1,5 +1,3 @@
-
-
 public class HomeWork {
 
   public static void main(String[] args) {
@@ -7,12 +5,14 @@ public class HomeWork {
       Kattio in = new Kattio(System.in, System.out);
       int Answer = 0;
       while(in.hasMoreTokens()){
-        String text = in.getWord();
-        for(int i = 0; i < text.length(); i++){
-          char current = text.charAt(i);
-          if(current >= 0 && current <= 9){
-            Answer++;
+        String str = in.getWord();
+        String[] arrSplit = str.split(";");
+        for(int i = 0; i < arrSplit.length; i++){
+          if(arrSplit[i].contains("-")){
+            String[] arrSplit2 = arrSplit[i].split("-");
+              Answer += Integer.parseInt(arrSplit2[1]) - Integer.parseInt(arrSplit2[0]);
           }
+          Answer++;
         }
       }
       in.println(Answer);
