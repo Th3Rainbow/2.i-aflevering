@@ -1,0 +1,69 @@
+public class semafori {
+  public static class trafficLight{
+    int D, R, G, Time;
+    boolean isGreen = false;
+      trafficLight(int Dis, int Red, int Green, int Time){
+        D = Dis;
+        R = Red;
+        G = Green;
+        Time = Time;
+        isGreen = isGreen;
+
+      }
+    void update(){
+      if(Time >= R + G){
+        Time = 0;
+      }
+      if(Time > R){
+        isGreen = true;
+      } else{
+        isGreen = false;
+      }
+      Time++;
+    }
+
+    boolean isGreen(){
+      return isGreen;
+    }
+  }
+  public static void main(String[] args) {
+    try{
+      Kattio in = new Kattio(System.in, System.out);
+      int N = in.getInt();
+      int L = in.getInt();
+      int X = 0;
+      int FinalTime = 0;
+      trafficLight obj[] = new trafficLight[N];
+      for(int i = 0; i < N; i++){
+        obj[i] = new trafficLight(in.getInt(), in.getInt(), in.getInt(), X);
+      }
+
+      for(int i = 0; i < N; i++){
+        if(obj[i].D == X){
+          if(obj[i].isGreen()){
+            X++;
+          }
+        }
+      }
+      while(X < L){
+        int lightsPassed = 0;
+          obj[lightsPassed].update();
+          if(obj[lightsPassed].D == X){
+            if(obj[lightsPassed].isGreen()){
+            X++;
+            lightsPassed++;
+            }
+          }else{
+            X++;
+          }
+        FinalTime++;
+      }
+      FinalTime--;
+      in.println(FinalTime);
+      in.close();
+      }
+      catch(Exception e){
+        e.printStackTrace();
+      }
+    }
+  }
